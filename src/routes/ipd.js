@@ -16,10 +16,10 @@ router.post("/", async (req, res) => {
   const user = new Ipd(req.body);
   try {
     const newUser = await user.save();
-    res.status(201).send(newUser);
+    res.status(201).send({ data: newUser, error: null });
   } catch (error) {
+    res.send({ data: null, error: error.message });
     console.log(error.message);
-    res.status(400).send(error.message);
   }
 });
 
