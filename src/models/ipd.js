@@ -35,7 +35,7 @@ const ipdSchema = new mongoose.Schema({
   mobileNumber: {
     type: Number,
     required: true,
-    maxlength: 10,
+    minlength: 10,
   },
   address: {
     type: String,
@@ -46,6 +46,11 @@ const ipdSchema = new mongoose.Schema({
     required: true,
     default: true,
   },
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now()
+  }
 });
 
 const Ipd = new mongoose.model("IpdRecord", ipdSchema);
